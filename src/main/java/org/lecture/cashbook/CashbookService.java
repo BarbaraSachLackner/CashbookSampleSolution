@@ -21,7 +21,9 @@ public class CashbookService {
                 4 - output all expenses
                 5 - output all sums per categories
                 6 - output total sum
-                Everything else: Exit
+                
+                
+                9 - Exit
                 """;
 
 
@@ -36,7 +38,7 @@ public class CashbookService {
                 case "4" -> print();
                 case "5" -> printCategories();
                 case "6" -> printTotalSum();
-                default -> System.exit(0);
+                case "9" -> System.exit(0);
 
             }
         }
@@ -104,8 +106,7 @@ public class CashbookService {
         System.out.println("Category");
         Category cat = getCategory();
         System.out.println("Amount: ");
-        BigDecimal amount = scanner.nextBigDecimal();
-        scanner.nextLine();
+        BigDecimal amount = getBigDecimal();
         LocalDate date = getDate();
 
         Expense expense = new Expense(amount, date, cat);
@@ -114,6 +115,12 @@ public class CashbookService {
 
         expense.setNote(note);
         cashbook.add(expense);
+    }
+
+    private static BigDecimal getBigDecimal() {
+        BigDecimal amount = scanner.nextBigDecimal();
+        scanner.nextLine();
+        return amount;
     }
 
     private LocalDate getDate() {
