@@ -6,10 +6,10 @@ import java.util.Scanner;
 
 public class CashbookService {
     private static final Scanner scanner = new Scanner(System.in);
-    private static Cashbook cashbook;
+    private final Cashbook cashbook;
 
     public CashbookService(Cashbook cashbook) {
-        CashbookService.cashbook = cashbook;
+        this.cashbook = cashbook;
     }
 
 
@@ -21,8 +21,8 @@ public class CashbookService {
                 4 - output all expenses
                 5 - output all sums per categories
                 6 - output total sum
-                
-                
+                                
+                                
                 9 - Exit
                 """;
 
@@ -52,7 +52,7 @@ public class CashbookService {
         System.out.println();
     }
 
-    private static void printCategories() {
+    private void printCategories() {
         var sums = cashbook.calculateTotalSumPerCategory();
         System.out.println("Rent: " + sums.getRent());
         System.out.println("Savings: " + sums.getSavings());
