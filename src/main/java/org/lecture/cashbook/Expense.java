@@ -19,19 +19,24 @@ public class Expense {
     private String note;
 
     public Expense(BigDecimal amount, LocalDate date, Category category) {
+       this(amount, date,category, "");
+    }
+
+    public Expense(BigDecimal amount, LocalDate date, Category category, String note) {
         this.amount = amount;
         this.date = date;
         this.category = category;
-        this.note = "";
+        this.note = note;
     }
 
     @Override
     public String toString() {
         String noteOutput = note;
-        if ("".equals(note)) {
+        if (noteOutput.isBlank()) {
             noteOutput = "none";
         }
-        return "Expense: " + amount.toString() + " €, " + category + " made on " + date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + ". Note: " + noteOutput + ".";
+        String formattedDate = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        return String.format("Expense: %s €, %s made on %s. Note: %s.", amount.toString() , category, formattedDate, noteOutput);
 
     }
 }

@@ -12,7 +12,7 @@ public class ExpenseTest {
 
 
     @Test
-    public void output() {
+    public void outputWithoutNote() {
         LocalDate now = LocalDate.now();
         String formattedDate = now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         Expense savings = new Expense(new BigDecimal("250"), now, Category.SAVINGS);
@@ -24,8 +24,7 @@ public class ExpenseTest {
     public void outputWithNote() {
         LocalDate now = LocalDate.now();
         String formattedDate = now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        Expense savings = new Expense(new BigDecimal("250"), now, Category.SAVINGS);
-        savings.setNote("with note");
+        Expense savings = new Expense(new BigDecimal("250"), now, Category.SAVINGS, "with note");
         String toString = "Expense: 250 €, " + Category.SAVINGS + " made on " + formattedDate + ". Note: with note.";
         assertEquals(toString, savings.toString());
     }
