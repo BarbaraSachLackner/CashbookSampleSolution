@@ -75,8 +75,8 @@ public class CashbookService {
     private void changeLastExpenseCategory() {
         Expense lastExpense = cashbook.getLastExpense();
         if (lastExpense != null) {
-            System.out.println("Current category: ");
-            System.out.println(lastExpense.getCategory());
+            System.out.print("Current category: ");
+            System.out.print(lastExpense.getCategory());
             System.out.println();
             System.out.println("Enter a new Category: ");
             Category cat = getCategory();
