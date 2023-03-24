@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.temporal.TemporalAmount;
-import java.time.temporal.TemporalUnit;
 
 public class CashbookTest {
 
@@ -50,10 +48,11 @@ public class CashbookTest {
     public void changeLastNote() {
         Cashbook cashbook = new Cashbook();
 
-        Expense rent = new Expense(new BigDecimal("300"), LocalDate.now(), Category.RENT);
+        LocalDate now = LocalDate.now();
+        Expense rent = new Expense(new BigDecimal("300"), now, Category.RENT);
         Expense rentFeb = new Expense(new BigDecimal("300"), LocalDate.of(2022, 2, 1), Category.RENT);
-        Expense savings = new Expense(new BigDecimal("250"), LocalDate.now(), Category.SAVINGS);
-        Expense restaurant = new Expense(new BigDecimal("50"), LocalDate.now(), Category.RESTAURANT);
+        Expense savings = new Expense(new BigDecimal("250"), now, Category.SAVINGS);
+        Expense restaurant = new Expense(new BigDecimal("50"), now, Category.RESTAURANT);
         restaurant.setNote("Note to change");
 
         cashbook.add(rent);
@@ -70,9 +69,10 @@ public class CashbookTest {
     public void changeLastCategory() {
         Cashbook cashbook = new Cashbook();
 
-        Expense rent = new Expense(new BigDecimal("300"), LocalDate.now(), Category.RENT);
+        LocalDate now = LocalDate.now();
+        Expense rent = new Expense(new BigDecimal("300"), now, Category.RENT);
         Expense rentFeb = new Expense(new BigDecimal("300"), LocalDate.of(2022, 2, 1), Category.RENT);
-        Expense savings = new Expense(new BigDecimal("250"), LocalDate.now(), Category.SAVINGS);
+        Expense savings = new Expense(new BigDecimal("250"), now, Category.SAVINGS);
         Expense restaurant = new Expense(new BigDecimal("50"), LocalDate.of(2022, 2, 15), Category.RESTAURANT);
 
         cashbook.add(rent);
