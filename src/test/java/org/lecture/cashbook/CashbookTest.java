@@ -82,8 +82,9 @@ public class CashbookTest {
 
         cashbook.changeLastExpense(Category.SAVINGS);
 
-        Assertions.assertEquals(Category.SAVINGS, cashbook.getLastExpense().getCategory());
-        Assertions.assertEquals(new BigDecimal(50), cashbook.getLastExpense().getAmount());
-        Assertions.assertEquals(LocalDate.of(2022, 2, 15), cashbook.getLastExpense().getDate());
+        Expense lastExpense = cashbook.getLastExpense();
+        Assertions.assertEquals(Category.SAVINGS, lastExpense.getCategory());
+        Assertions.assertEquals(new BigDecimal(50), lastExpense.getAmount());
+        Assertions.assertEquals(LocalDate.of(2022, 2, 15), lastExpense.getDate());
     }
 }
