@@ -12,17 +12,21 @@ public class ExpenseTest {
 
 
     @Test
-    public void output(){
-        Expense savings = new Expense(new BigDecimal("250"), LocalDate.now(), Category.SAVINGS);
-        String toString = "Expense: 250 €, " + Category.SAVINGS + " made on 01/03/2022. Note: none";
+    public void output() {
+        LocalDate now = LocalDate.now();
+        String formattedDate = now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        Expense savings = new Expense(new BigDecimal("250"), now, Category.SAVINGS);
+        String toString = "Expense: 250 €, " + Category.SAVINGS + " made on " + formattedDate + ". Note: none.";
         assertEquals(toString, savings.toString());
     }
 
     @Test
-    public void outputWithNote(){
-        Expense savings = new Expense(new BigDecimal("250"), LocalDate.now(), Category.SAVINGS);
+    public void outputWithNote() {
+        LocalDate now = LocalDate.now();
+        String formattedDate = now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        Expense savings = new Expense(new BigDecimal("250"), now, Category.SAVINGS);
         savings.setNote("with note");
-        String toString = "Expense: 250 €, " + Category.SAVINGS + " made on 01/03/2022. Note: with note.";
+        String toString = "Expense: 250 €, " + Category.SAVINGS + " made on " + formattedDate + ". Note: with note.";
         assertEquals(toString, savings.toString());
     }
 }
