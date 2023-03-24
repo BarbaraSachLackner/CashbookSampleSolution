@@ -1,10 +1,12 @@
 package org.lecture.cashbook;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.math.BigDecimal;
 
 @Getter
+@EqualsAndHashCode
 public class CategorySum {
 
     private final BigDecimal rent;
