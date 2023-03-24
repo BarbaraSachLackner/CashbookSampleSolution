@@ -68,6 +68,15 @@ public class Cashbook {
         if (!this.expenses.isEmpty()) {
             return this.expenses.get(expenses.size() - 1);
         }
+
+        /*
+        //Alternative Methode
+        Iterator<Expense> descendingIterator = ((LinkedList<Expense>) this.expenses).descendingIterator();
+        if (descendingIterator.hasNext()) {
+            return descendingIterator.next();
+        }
+        */
+
         return null;
 
     }
