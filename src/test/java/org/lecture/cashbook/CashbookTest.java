@@ -13,10 +13,10 @@ public class CashbookTest {
 
     @BeforeEach
     public void setUp() {
-        Expense rent = new Expense(new BigDecimal("300"), LocalDate.now(), Category.RENT);
-        Expense rentFeb = new Expense(new BigDecimal("300"), LocalDate.of(2022, 2, 1), Category.RENT);
-        Expense savings = new Expense(new BigDecimal("250"), LocalDate.now(), Category.SAVINGS);
-        Expense restaurant = new Expense(new BigDecimal("50"), LocalDate.now(), Category.RESTAURANT);
+        Expense rentFeb = new Expense(new BigDecimal("300"), LocalDate.of(2023, 2, 1), Category.RENT);
+        Expense rent = new Expense(new BigDecimal("300"), LocalDate.of(2023, 3, 29), Category.RENT);
+        Expense savings = new Expense(new BigDecimal("250"), LocalDate.of(2023, 3, 29), Category.SAVINGS);
+        Expense restaurant = new Expense(new BigDecimal("50"), LocalDate.of(2023, 3, 29), Category.RESTAURANT);
 
         cashbook.add(rent);
         cashbook.add(rentFeb);
@@ -38,7 +38,7 @@ public class CashbookTest {
 
     @Test
     public void changeLastNote() {
-        Expense restaurant = new Expense(new BigDecimal("100"), LocalDate.now(), Category.RESTAURANT, "Note to change");
+        Expense restaurant = new Expense(new BigDecimal("100"), LocalDate.of(2023, 3, 29), Category.RESTAURANT, "Note to change");
         cashbook.add(restaurant);
         cashbook.changeLastExpense("Changed note");
         Assertions.assertEquals("Changed note", cashbook.getLastExpense().getNote());
@@ -56,4 +56,5 @@ public class CashbookTest {
         Assertions.assertEquals(new BigDecimal(100), lastExpense.getAmount());
         Assertions.assertEquals(date, lastExpense.getDate());
     }
+
 }

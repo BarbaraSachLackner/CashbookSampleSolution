@@ -5,11 +5,12 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class CashbookService {
-    private static final Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner;
     private final Cashbook cashbook;
 
     public CashbookService(Cashbook cashbook) {
         this.cashbook = cashbook;
+        scanner = new Scanner(System.in);
     }
 
 
@@ -26,8 +27,8 @@ public class CashbookService {
                 9 - Exit
                 """;
 
-
-        while (true) {
+        boolean loop = true;
+        while (loop) {
             System.out.println(menu);
             String input = scanner.nextLine();
 
@@ -38,7 +39,7 @@ public class CashbookService {
                 case "4" -> print();
                 case "5" -> printCategories();
                 case "6" -> printTotalSum();
-                case "9" -> System.exit(0);
+                case "9" -> loop =false;
 
             }
         }
@@ -117,7 +118,7 @@ public class CashbookService {
         cashbook.add(expense);
     }
 
-    private static BigDecimal getBigDecimal() {
+    private BigDecimal getBigDecimal() {
         BigDecimal amount = scanner.nextBigDecimal();
         scanner.nextLine();
         return amount;
@@ -130,7 +131,7 @@ public class CashbookService {
         return LocalDate.of(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]));
     }
 
-    private static Category getCategory() {
+    private Category getCategory() {
         while (true) {
             System.out.println("Category: ");
             String category = """
